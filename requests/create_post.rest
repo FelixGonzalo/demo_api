@@ -14,3 +14,13 @@ Content-Type: application/json
 {
   "title": "Title example"
 }
+
+###
+
+POST https://mysterious-gorge-57369.herokuapp.com/api/posts
+Content-Type: application/json
+
+{
+  "title": "Title example Gonza222",
+  "body": "lorem ipsum dolor sit am"
+}

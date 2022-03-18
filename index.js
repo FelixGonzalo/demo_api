@@ -105,7 +105,7 @@ app.post('/api/posts', (request, response) => {
 
 	posts = [...posts, newPost]
 
-	response.status().json(newPost)
+	response.status(200).json(newPost)
 })
 
 app.use((request, response) => {
