@@ -1,0 +1,16 @@
+POST http://localhost:3001/api/posts
+Content-Type: application/json
+
+{
+  "title": "Title example",
+  "body": "lorem ipsum dolor sit am"
+}
+
+###
+
+POST http://localhost:3001/api/posts
+Content-Type: application/json
+
+{
+  "title": "Title example"
+}
