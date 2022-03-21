@@ -9,6 +9,7 @@ const handleError = require('./middleware/handleError')
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('public'))
 
 app.get('/', (request, response) => {
   response.send('<h1>hello world</h1>')

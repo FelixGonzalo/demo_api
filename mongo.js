@@ -10,6 +10,10 @@ mongoose.connect(connectionString)
 		console.log(err)
 	})
 
+process.on('uncaughtException', () => {
+  moongose.connection.disconnect()
+})
+
 // GUARDAR
 
 // const post = new Post({
