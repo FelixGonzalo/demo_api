@@ -14,11 +14,13 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "2.0.15",
-    "standard": "^16.0.4"
+    "standard": "16.0.4"
   },
   "dependencies": {
     "cors": "2.8.5",
-    "express": "4.17.3"
+    "dotenv": "^16.0.0",
+    "express": "4.17.3",
+    "mongoose": "6.2.7"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"

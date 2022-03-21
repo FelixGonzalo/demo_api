@@ -21,6 +21,6 @@ POST https://mysterious-gorge-57369.herokuapp.com/api/posts
 Content-Type: application/json
 
 {
-  "title": "Title example Gonza222",
+  "title": "Title example Gonza333",
   "body": "lorem ipsum dolor sit am"
 }
