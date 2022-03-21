@@ -4,13 +4,11 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const Post = require('./models/Post')
+const notFound = require('./middleware/notFound')
+const handleError = require('./middleware/handleError')
 
-//libre
 app.use(cors())
-//this is a middleware: con use pasan todos los tipos: get, post, etc.
 app.use(express.json())
-
-let posts = []
 
 app.get('/', (request, response) => {
   response.send('<h1>hello world</h1>')
@@ -23,8 +21,6 @@ app.get('/api/posts', (request, response) => {
 })
 
 app.get('/api/posts/:id', (request, response, next) => {
-  // const id = Number(request.params.id)
-  // const post = posts.find(post => post.id === id)
   const { id } = request.params
   Post.findById(id)
     .then(post => {
@@ -36,8 +32,6 @@ app.get('/api/posts/:id', (request, response, next) => {
     })
     .catch(err => {
       next(err)
-      // console.log(err)
-      // response.status(400).end()
     })
 })
 
@@ -56,9 +50,6 @@ app.put('/api/posts/:id', (request, response, next) => {
 })
 
 app.delete('/api/posts/:id', (request, response, next) => {
-  // const id = Number(request.params.id)
-  // posts = posts.filter(post => post.id !== id)
-
   const { id } = request.params
   Post.findByIdAndRemove(id)
     .then(result => {
@@ -87,29 +78,14 @@ app.post('/api/posts', (request, response) => {
     date: new Date().toISOString(),
   })
 
-  // posts = [...posts, newPost]
-  // response.status(200).json(newPost)
-
   newPost.save().then(savedPost => {
     response.status(200).json(savedPost)
   })
 })
 
-app.use((request, response, next) => {
-	response.status(404).json({
-		error: 'Not Found'
-	})
-})
+app.use(notFound)
 
-app.use((error, request, response, next) => {
-  console.error(error)
-  console.log(error.name)
-  if (error.name === 'CastError') {
-    response.status(400).send({ error: 'id used is malformed' })
-  } else {
-    response.status(500).end()
-  }
-})
+app.use(handleError)
 
 const PORT = process.env.PORT || 3001
 
