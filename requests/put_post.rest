@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/posts/6238bcb9427460b7a17f116b
+Content-Type: application/json
+
+{
+  "title": "ACtualizando un dato otra vez v2",
+  "body": "lorem ipsum dolor sit am actualizado"
+}
